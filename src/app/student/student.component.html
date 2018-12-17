@@ -1,6 +1,11 @@
-<div>
-  Student: {{student.name}}
-  <div *ngIf="student.isJedi">
-    Jedi Template: {{student.temple}}
+<!-- O sinal de '?' é para navegação segura, podendo esperar a informação ou a falta dela sem ocasionar erros -->
+<div *ngIf="student">
+  Student: <a href="#" (click)="clicked()">{{student?.name}}</a>
+  <div *ngIf="student?.isJedi">
+    Jedi Template: {{student?.temple}} <button (click)="description.focus()">Focus!</button>
+    <textarea #description></textarea>
   </div>
 </div>
+<p *ngIf="!student">
+  Sem dados para exibir
+</p>
